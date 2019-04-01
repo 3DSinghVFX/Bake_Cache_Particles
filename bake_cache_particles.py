@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 80, 0),
     "location": "AN Node Editor > Tools",
-    "description": "Adds a new Mesh Object",
+    "description": "This addon allows to bake the cached particles of active object",
     "warning": "",
     "wiki_url": "",
     "category": "Object",
