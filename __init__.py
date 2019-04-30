@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Bake Cache Particles",
     "author": "Kuldeep Singh",
-    "version": (1, 0),
+    "version": (1, 1),
     "blender": (2, 80, 0),
     "location": "AN Node Editor > Tools",
     "description": "This addon allows to bake the cached particles of active object",
@@ -12,9 +12,7 @@ bl_info = {
 
 import bpy
 from bpy.types import Operator
-from bpy.props import FloatVectorProperty
-from bpy_extras.object_utils import AddObjectHelper, object_data_add
-from mathutils import Vector
+from bpy.props import *
 
 def bake_particles(self):
     scene = bpy.context.scene.name
