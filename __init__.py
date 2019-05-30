@@ -95,7 +95,7 @@ class PARTICLES_PT_bake_unbake_ui(bpy.types.Panel):
     def draw(self, context):
         scene = bpy.context.scene.name
         obj = bpy.context.active_object
-        if obj.type == "MESH" and bpy.data.objects[obj.name].particle_systems.active is not None:
+        if obj is not None and obj.type == "MESH" and bpy.data.objects[obj.name].particle_systems.active is not None:
             particleSettings = bpy.data.objects[obj.name].particle_systems.active.name
             particleSystem = bpy.data.objects[obj.name].particle_systems[particleSettings]        
             tree = self.getTree()
