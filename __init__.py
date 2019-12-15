@@ -44,7 +44,6 @@ def free_bake_particles(self):
     bpy.ops.ptcache.free_bake(cache)
     bpy.app.handlers.frame_change_pre.clear()        
 
-
 class PARTICLES_OT_bake(Operator):
     """Bake particles"""
     bl_idname = "an.bake_particles"
@@ -95,7 +94,8 @@ class PARTICLES_PT_bake_unbake_ui(bpy.types.Panel):
     def draw(self, context):
         scene = bpy.context.scene.name
         obj = bpy.context.active_object
-        if obj is not None and obj.type == "MESH" and bpy.data.objects[obj.name].particle_systems.active is not None:
+        if obj is None: return 
+        if obj.type == "MESH" and bpy.data.objects[obj.name].particle_systems.active is not None:
             particleSettings = bpy.data.objects[obj.name].particle_systems.active.name
             particleSystem = bpy.data.objects[obj.name].particle_systems[particleSettings]        
             tree = self.getTree()
@@ -112,19 +112,16 @@ class PARTICLES_PT_bake_unbake_ui(bpy.types.Panel):
     def getTree(cls):
         return bpy.context.space_data.edit_tree
 
-
-
 def register():
     bpy.utils.register_class(PARTICLES_OT_bake)
     bpy.utils.register_class(PARTICLES_OT_free_bake)    
     bpy.utils.register_class(PARTICLES_PT_bake_unbake_ui)
-
 
 def unregister():
     bpy.utils.unregister_class(PARTICLES_OT_bake)
     bpy.utils.unregister_class(PARTICLES_OT_free_bake)    
     bpy.utils.unregister_class(PARTICLES_PT_bake_unbake_ui)
 
-
 if __name__ == "__main__":
     register()
+
